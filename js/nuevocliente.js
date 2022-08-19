@@ -112,25 +112,3 @@
     }
 
 })();
-  function crearNuevoCliente(cliente) {
-    const transaction = DB.transaction(["crm"], "readwrite");
-    const objectStore = transaction.objectStore("crm");
-
-    objectStore.add(cliente);
-
-    transaction.onerror = function () {
-      imprimirAlerta("hubo un error", "error");
-    };
-    transaction.oncomplete = function () {
-      console.log("Cliente Agregada");
-
-      imprimirAlerta("El cliente se agrego Correctamente");
-
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 3000);
-    };
-  }
-
-  
-})();
